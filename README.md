@@ -10,7 +10,7 @@ A beautiful, responsive web application for managing your favorite recipes.
 - Local storage persistence
 
 ## Live Demo
-Visit: https://YOUR_USERNAME.github.io/recipe-manager
+Visit: https://inspiringdev.github.io/recipe-manager
 
 ## Technologies Used
 - HTML5
