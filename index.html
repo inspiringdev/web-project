@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍳 Recipe Manager</h1>
+            <p>Your personal cookbook for delicious recipes</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search recipes by title or ingredients...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <button class="btn btn-primary" onclick="openAddModal()">+ Add Recipe</button>
+        </div>
+
+        <div id="recipesContainer" class="recipes-grid"></div>
+        
+        <div class="pagination" id="pagination"></div>
+
+        <!-- Add/Edit Recipe Modal -->
+        <div id="recipeModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Add New Recipe</h2>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <form id="recipeForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="title">Recipe Title *</label>
+                        <input type="text" id="title" name="title" required>
+                        <span class="error-message" id="titleError">Please enter a recipe title</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="ingredients">Ingredients * (one per line)</label>
+                        <textarea id="ingredients" name="ingredients" required></textarea>
+                        <span class="error-message" id="ingredientsError">Please enter ingredients</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="instructions">Instructions *</label>
+                        <textarea id="instructions" name="instructions" required></textarea>
+                        <span class="error-message" id="instructionsError">Please enter instructions</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Recipe Image</label>
+                        <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)">
+                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button type="submit" class="btn btn-primary" style="flex: 1;">Save Recipe</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModal()" style="flex: 1;">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- View Recipe Modal -->
+        <div id="viewModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="viewTitle"></h2>
+                    <button class="close-btn" onclick="closeViewModal()">&times;</button>
+                </div>
+                <div id="viewContent"></div>
+                <button class="btn btn-secondary" onclick="closeViewModal()" style="width: 100%; margin-top: 20px;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
